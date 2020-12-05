@@ -32,8 +32,8 @@ class NetworkRepository : CoroutineScope {
         get() = Dispatchers.IO
 
     fun start() {
-        FROM.set(2020, 11, 7, 8, 0, 0)
-        TO.set(2020, 11, 7, 20, 0, 0)
+        FROM.set(2020, 11, 7, 9, 0, 0)
+        TO.set(2020, 11, 7, 21, 0, 0)
         "https://api.dtf.ru/v1.9/entry/275911/comments"
             .httpGet()
             .header("X-Device-Token" to APIKEY)
@@ -92,7 +92,7 @@ class NetworkRepository : CoroutineScope {
         launch {
             withContext(Dispatchers.Main) {
                 val oneWeekAgo = Calendar.getInstance().timeInMillis - ONE_WEEK
-                _users.postValue(users.filter { it.rating > -26 && it.dateCreated < oneWeekAgo })
+                _users.postValue(users.filter { it.rating > -26 && it.dateCreated < oneWeekAgo }.shuffled())
             }
         }
     }
