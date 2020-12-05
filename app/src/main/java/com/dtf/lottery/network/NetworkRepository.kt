@@ -73,11 +73,9 @@ class NetworkRepository : CoroutineScope {
     private fun convertComments(comments: MutableList<Comment>) {
         val users = mutableListOf<User>()
         for (comment in comments) {
-/*
             val userIndex = users.indexOfFirst { it.id == comment.userId }
             if (userIndex > -1 ||
                 (comment.timestamp < FROM.timeInMillis || comment.timestamp > TO.timeInMillis || comment.text != "+")) continue
-*/
             "https://api.dtf.ru/v1.9/user/${comment.userId}"
                 .httpGet()
                 .header("X-Device-Token" to APIKEY)
