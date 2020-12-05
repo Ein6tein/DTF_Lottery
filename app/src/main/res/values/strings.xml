@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DTF Lottery</string>
+
+    <string name="select">Выбрать</string>
+    <string name="registered">Зарегистрирован(а):</string>
+    <string name="rating">Рейтинг</string>
+</resources>

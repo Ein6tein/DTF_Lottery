@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        />
+
+    <TextView
+        android:id="@+id/tv_nick_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Some Dude 1"
+        />
+
+    <TextView
+        android:id="@+id/tv_registration_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/registered"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/iv_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_nick_name"
+        />
+
+    <TextView
+        android:id="@+id/tv_registration_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/middle_gray"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_registration_date_label"
+        app:layout_constraintStart_toEndOf="@id/tv_registration_date_label"
+        tools:text="31.12.2018"
+        />
+
+    <TextView
+        android:id="@+id/tv_rating_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:text="@string/rating"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/iv_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_registration_date_label"
+        />
+
+    <TextView
+        android:id="@+id/tv_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/green"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_rating_label"
+        app:layout_constraintStart_toEndOf="@id/tv_rating_label"
+        tools:text="+100000"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
