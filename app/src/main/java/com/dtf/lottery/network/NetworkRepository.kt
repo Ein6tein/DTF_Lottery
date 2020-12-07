@@ -32,8 +32,8 @@ class NetworkRepository : CoroutineScope {
         get() = Dispatchers.IO
 
     fun start() {
-        FROM.set(2020, 11, 7, 9, 0, 0)
-        TO.set(2020, 11, 7, 21, 0, 0)
+        FROM.set(2020, 11, 7, 8, 0, 0)
+        TO.set(2020, 11, 7, 20, 0, 0)
         "https://api.dtf.ru/v1.9/entry/275911/comments"
             .httpGet()
             .header("X-Device-Token" to APIKEY)
@@ -57,7 +57,7 @@ class NetworkRepository : CoroutineScope {
             comments.add(
                 Comment(
                     commentJson.optInt("id"),
-                    commentJson.optLong("date"),
+                    commentJson.optLong("date") * 1000,
                     commentJson.optString("text"),
                     commentJson.optJSONObject("author")?.optInt("id") ?: 0
                 )
@@ -75,7 +75,7 @@ class NetworkRepository : CoroutineScope {
         for (comment in comments) {
             val userIndex = users.indexOfFirst { it.id == comment.userId }
             if (userIndex > -1 ||
-                (comment.timestamp < FROM.timeInMillis || comment.timestamp > TO.timeInMillis || comment.text != "+")) continue
+                (comment.timestamp < FROM.timeInMillis || comment.timestamp > TO.timeInMillis || !comment.text.contains("+"))) continue
             "https://api.dtf.ru/v1.9/user/${comment.userId}"
                 .httpGet()
                 .header("X-Device-Token" to APIKEY)
@@ -87,7 +87,7 @@ class NetworkRepository : CoroutineScope {
                         }
                     }
                 }
-            Thread.sleep(400)
+            Thread.sleep(350)
         }
         launch {
             withContext(Dispatchers.Main) {
